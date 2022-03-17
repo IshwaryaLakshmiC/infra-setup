@@ -1,0 +1,17 @@
+---
+- name: Test Executing ansible user
+  hosts: localhost
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  become_user: root
+  gather_facts: yes
+  connection: ssh
+  tasks:
+  - name: Check using id
+    shell: id
+  - name: Check using whoami
+    shell: whoami
+    register: cmd_output
+  - debug:
+      var: cmd_output.stdout_lines

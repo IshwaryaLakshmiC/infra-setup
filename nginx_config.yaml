@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  tasks:
+    - name: copy playbook file
+      become: false
+      copy:
+        src: deployment_nginx.yaml
+        dest: /home/ansible/deployment_nginx.yaml
+    - name: execute commands
+      command: "{{ items }}"
+      with_items:
+        - minikube addons enable ingress
+        - docker run -p 8087:8080 gcr.io/kubernetes-e2e-test-images/echoserver:2.2
+        - kubectl apply -f deployment.yaml
+        - minikube service e2e-svc --url
+      register: output_url
+    - debug: 
+        var: output_url.stdout_lines
