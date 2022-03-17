@@ -1,0 +1,5 @@
+Ensure the following are installed
+1. Ansible
+2. Python3
+3. Pip
+4. Boto
