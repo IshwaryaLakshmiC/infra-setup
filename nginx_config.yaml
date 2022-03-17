@@ -12,7 +12,8 @@
         - minikube addons enable ingress
         - docker run -p 8087:8080 gcr.io/kubernetes-e2e-test-images/echoserver:2.2
         - kubectl apply -f deployment.yaml
-        - minikube service e2e-svc --url
+    - name: check service url
+      shell: minikube service e2e-svc --url
       register: output_url
     - debug: 
         var: output_url.stdout_lines
