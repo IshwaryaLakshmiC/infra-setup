@@ -8,6 +8,7 @@ In this repo, Shell scripts are used to monitor the health status of the server,
 
 Infrastructure: 
   EC2 instance created (ubuntu)
+  Username - ansible is created and used for the installation. 
   Docker, kubectl, minikube is installed
   Nginx is deployed and the port is exposed.
   
